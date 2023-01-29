@@ -20,31 +20,12 @@ const toDoControllers = {
     res.json({ toDos })
   },
 
-  toDoPut: async (req, res) => {
-    const { id } = req.params
-    const { _id, state, __v, ...resto } = req.body
+  toDoHandleState: async (req, res) => {
+    const { id, state } = req.params
 
-    const toDos = await toDo.findByIdAndUpdate(id, resto)
+    const newState = state === 'false' ? 'true' : 'false'
 
-    res.json({
-      toDos
-    })
-  },
-
-  toDoPutComplete: async (req, res) => {
-    const { id } = req.params
-
-    const toDos = await toDo.findByIdAndUpdate(id, { state: 1 })
-
-    res.json({
-      toDos
-    })
-  },
-
-  toDoPutActive: async (req, res) => {
-    const { id } = req.params
-
-    const toDos = await toDo.findByIdAndUpdate(id, { state: 0 })
+    const toDos = await toDo.findByIdAndUpdate(id, { state: newState })
 
     res.json({
       toDos
