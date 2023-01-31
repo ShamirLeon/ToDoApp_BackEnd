@@ -8,5 +8,6 @@ router.get('/', [validarCampos], toDoControllers.toDoGet)
 router.post('/', [validarCampos], toDoControllers.toDoPost)
 router.put('/handleState/:id/:state', [validarCampos], toDoControllers.toDoHandleState)
 router.delete('/delete/:id', [validarCampos], toDoControllers.toDoDelete)
+router.delete('/deleteCompleted/', [validarCampos], toDoControllers.toDoDeleteCompleted)
 
 export default router

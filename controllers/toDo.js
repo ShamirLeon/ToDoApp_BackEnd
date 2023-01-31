@@ -39,6 +39,14 @@ const toDoControllers = {
     res.json({
       toDos
     })
+  },
+
+  toDoDeleteCompleted: async (req, res) => {
+    const toDos = await toDo.deleteMany({ state: true })
+
+    res.json({
+      toDos
+    })
   }
 }
 
